@@ -18,6 +18,40 @@ class Todo {
 
         //Inserir na lista
         list.appendChild(template);
+
+        //Adiciona evento nas tasks
+        this.addEvents();
+    }
+
+    removeTask(task) {
+
+        //Achar o elemento pai
+        let parentEl = task.parentElement;
+
+        //Remover da lista
+        parentEl.remove();
+    }
+
+    completeTask(task) {
+        console.log('completou')
+    }
+
+    addEvents() {
+        let removeBtns = document.querySelectorAll('.fa-trash');
+        let removeBtn = removeBtns[removeBtns.length - 1];
+
+        let doneBtns = document.querySelectorAll('.fa-check');
+        let doneBtn = doneBtns[doneBtns.length - 1];
+
+        //Adicionar Evento de Remover
+        removeBtn.addEventListener('click', function() {
+            todo.removeTask(this)
+        })
+
+        //Adicionar evento de completar tarefa
+        doneBtn.addEventListener('click', function() {
+            todo.completeTask(this)
+        })
     }
 
 }
